@@ -38,7 +38,7 @@ def respond():
     return jsonify(message)
 
 # Responds to "How do I contribute / add a pun?"
-@pun_bot.route('/contribution' methods=['POST'])
+@pun_bot.route('/contribution', methods=['POST'])
 def contribution():
     message = {
         'author': 'Pun Bot',
