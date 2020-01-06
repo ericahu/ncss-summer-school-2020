@@ -19,6 +19,8 @@ def word_count():
 
 @pun_bot.route('/ack', methods=['POST'])
 def ack():
+    person = request.get_json()
+    print(person)
     message = {
         'author': 'ACK bot',
         'text': f'I got your message',
