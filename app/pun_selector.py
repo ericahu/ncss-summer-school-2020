@@ -1,5 +1,4 @@
-from random import random
-import re, yaml
+import random, re, yaml
 
 class Pun_Selector():
 
@@ -21,6 +20,9 @@ class Pun_Selector():
             print(f'Topics       - {", ".join(pun["Topics"])}')
             print(f'Unique Words - {", ".join(pun["Unique Words"])}')
             print()
+
+    def random_choice(self):
+        return random.choice(self.puns)
 
     def show_similarity(self):
         print(self.similarity_score)
@@ -50,13 +52,6 @@ class Pun_Selector():
     # def select(self, topic=''):
     #     pun_pool = [pun if topic  for pun in puns]
 
-p = Pun_Selector()
-p.print()
-p.generate("the")
-p.show_similarity()
-
-# with open(r'E:\data\categories.yaml') as file:
-#     documents = yaml.full_load(file)
-
-    # for item, doc in documents.items():
-    #     print(item, ":", doc)
+# p = Pun_Selector()
+# p.input()
+# (print(p.random_choice()))

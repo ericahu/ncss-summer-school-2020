@@ -53,6 +53,8 @@ def _regex_handler(text):
     pattern = re.compile('(?i)give me a pun')
     if pattern.match(text):
         return 'I like to make punny funs'
+    else:
+        return 'I like to make punny funs!'
 
 
 
