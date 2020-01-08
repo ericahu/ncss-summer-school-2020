@@ -1,25 +1,7 @@
+import re
+from flask import request, jsonify
 from app import pun_bot
 from app.pun_selector import Pun_Selector
-# import pun_selector as ps
-
-from flask import request, jsonify
-import re
-
-@pun_bot.route('/echo', methods=['POST'])
-def word_count():
-  # Get the message data
-  data = request.get_json()
-  author = data.get('author', 'I don\'t know your name')
-  text = data.get('text', '')
-
-  # Create a message to send to the sorted
-  message = {
-    'author': 'Echo bot',
-    'text': f'{author} said: {text}',
-  }
-
-  # Return the JSON
-  return jsonify(message)
 
 @pun_bot.route('/ack', methods=['POST'])
 def ack():
