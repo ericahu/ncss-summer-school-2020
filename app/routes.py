@@ -61,7 +61,7 @@ def _regex_handler(text):
         pun = ps.random_choice()
         formatted = pun['Description']
         if pun['Owner'] != '':
-            formatted += f' - {pun["Owner"]}'
+            formatted += f' - {pun["Owner"][0]}'
         return formatted
     # if pattern.match(text):
     #     pun
