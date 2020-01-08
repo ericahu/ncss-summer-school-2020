@@ -11,7 +11,7 @@ class Pun_Selector():
             puns_list = yaml.full_load(file)
             for pun in puns_list:
                 pun['Topics'] = pun['Topics'].replace(' ','').split(',') if 'Topics' in pun else []
-                pun['Owner'] = pun['Owner'].replace(' ','').split(',') if 'Owner' in pun else []
+                pun['Owner'] = pun['Owner'].replace(' ','').split(',') if 'Owner' in pun else ''
                 pun['Unique Words'] = self._get_unique_words(pun['Description'])
             self.puns = puns_list
 
