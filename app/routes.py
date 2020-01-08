@@ -1,5 +1,7 @@
 from app import pun_bot
-import pun_selector as ps
+from app.pun_selector import Pun_Selector
+# import pun_selector as ps
+
 from flask import request, jsonify
 import re
 
@@ -53,7 +55,7 @@ def pun_bot():
 def _regex_handler(text):
     pattern = re.compile('(?i)give me a pun')
     if pattern.match(text):
-        pun = ps.Pun_Selector()
+        pun = Pun_Selector()
         pun.input()
         return pun.random_choice()['Description']
     else:
