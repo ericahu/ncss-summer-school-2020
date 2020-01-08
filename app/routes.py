@@ -59,7 +59,10 @@ def _regex_handler(text):
 
     if pattern.match(text):
         pun = ps.random_choice()
-        return ' - '.join([pun['Description'], pun['Owner']])
+        formatted = pun['Description']
+        if pun['Owner'] != '':
+            formatted += f' - {pun["Owner"]}'
+        return formatted
     # if pattern.match(text):
     #     pun
     else:
