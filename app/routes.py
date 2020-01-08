@@ -1,5 +1,6 @@
 from app import pun_bot
 from flask import request, jsonify
+import re
 
 @pun_bot.route('/echo', methods=['POST'])
 def word_count():
@@ -27,18 +28,6 @@ def ack():
     }
     return jsonify(message)
 
-@pun_bot.route('/', methods=['POST'])
-def respond():
-    # data = request.get_json()
-    # params = data.get('params', {})
-    # topic = params.get('topic', '')
-
-    message = {
-        'author': 'Pun Bot',
-        'text': 'I like to make punny funs',
-    }
-    return jsonify(message)
-
 # Responds to "How do I contribute / add a pun?"
 @pun_bot.route('/contribution', methods=['POST'])
 def contribution():
@@ -48,6 +37,22 @@ def contribution():
     }
     return jsonify(message)
 
+@pun_bot.route('/', methods=['POST'])
+def pun_bot():
+    data = request.get_json()
+    text = data.get('text', '')
+    returned_text = _regex_handler(text)
+
+    message = {
+        'author': 'Pun Bot',
+        'text': returned_text,
+    }
+    return jsonify(message)
+
+def _regex_handler(text):
+    pattern = re.compile('(?i)give me a pun')
+    if pattern.match(text):
+        return 'I like to make punny funs'
 
 
 

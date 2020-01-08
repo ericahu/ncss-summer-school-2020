@@ -1,0 +1,6 @@
+repeat (?P<word>\w+) (?P<count>\d+) times
+(?i)(repeat) (?P<word>(\w+\s)+)(?P<count>\d+) times
+
+repeat (?P<word>\w+){.} (?P<count>\d+) times
+
+(?i)(tell|give) me a pun about (?P<topic>(\w+\s)+)
