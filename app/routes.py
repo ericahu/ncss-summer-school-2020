@@ -53,11 +53,15 @@ def pun_bot():
     return jsonify(message)
 
 def _regex_handler(text):
-    pattern = re.compile('(?i)give me a pun')
+    pattern = re.compile('(?i)gi(ve me|mme) a pun')
+    ps = Pun_Selector()
+    ps.input()
+
     if pattern.match(text):
-        pun = Pun_Selector()
-        pun.input()
-        return pun.random_choice()['Description']
+        pun = ps.random_choice()
+        return ' - '.join([pun['Description'], pun['Owner']])
+    # if pattern.match(text):
+    #     pun
     else:
         return 'I like to make punny funs!'
 
