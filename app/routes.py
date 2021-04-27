@@ -14,11 +14,11 @@ def ack():
     return jsonify(message)
 
 # Responds to "How do I contribute / add a pun?"
-@pun_bot.route('/contribution', methods=['POST'])
-def contribution():
+@pun_bot.route('/contribute', methods=['POST'])
+def contribute():
     message = {
         'author': 'Pun Bot',
-        'text': 'You can add your punny puns here! --> TODO'
+        'text': "So you want to add your punny pun to the punny-pun-store. Do your worst - what's your best pun?"
     }
     return jsonify(message)
 
@@ -35,16 +35,19 @@ def pun_bot():
     return jsonify(message)
 
 def _regex_handler(text):
-    pattern = re.compile('(?i)gi(ve me|mme) a pun')
     ps = Pun_Selector()
     ps.input()
 
+    # "Hey pun bot, give me a pun"
+    pattern = re.compile('(?i)gi(ve me|mme) a pun')
     if pattern.match(text):
         pun = ps.random_choice()
         formatted = pun['Description']
         if pun['Owner'] != '':
             formatted += f' - {pun["Owner"][0]}'
         return formatted
+
+    #
     # if pattern.match(text):
     #     pun
     else:
